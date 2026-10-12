@@ -1,0 +1,26 @@
+# ESP-IDF build directories (keep build.ps1 tracked)
+/build/
+/build_*/
+
+# Dependencies restored by the ESP-IDF component manager
+/managed_components/
+
+# Build and diagnostic logs
+*.log
+
+# Generated configuration backups; active configs and defaults stay tracked
+sdkconfig.old
+sdkconfig.*.old
+
+# Python caches and local environments
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Editor and operating-system temporary files
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
