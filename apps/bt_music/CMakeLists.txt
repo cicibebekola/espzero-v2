@@ -1,0 +1,31 @@
+idf_component_register(
+    SRCS
+        "main.c"
+        "bt/bt_music_backend.c"
+        "audio/mp3_player.c"
+        "audio/pcm_resampler.c"
+        "ui/bt_music_ui.c"
+        "ui/bt_scan_ui.c"
+    INCLUDE_DIRS
+        "."
+        "bt"
+        "audio"
+        "ui"
+    PRIV_REQUIRES
+        lvgl
+        lvgl_runtime
+        esp_lvgl_port
+        touch_xpt2046
+        sd_card
+        sleep_manager
+        minimp3
+        ota_loader
+        device_config
+        nvs_flash
+        esp_timer
+        esp_driver_gpio
+        bt
+        driver
+        esp_ringbuf
+        freertos
+)

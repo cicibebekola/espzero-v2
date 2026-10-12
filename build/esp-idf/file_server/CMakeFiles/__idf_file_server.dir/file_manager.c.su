@@ -1,0 +1,17 @@
+C:/Users/koral/Documents/EspZero-v2/components/file_server/file_manager.c:167:13:event	32	static
+C:/Users/koral/Documents/EspZero-v2/components/file_server/file_manager.c:103:13:full_path	32	static
+C:/Users/koral/Documents/EspZero-v2/components/file_server/file_manager.c:40:13:visible_path	512	static
+C:/Users/koral/Documents/EspZero-v2/components/file_server/file_manager.c:72:13:parameter	64	static
+C:/Users/koral/Documents/EspZero-v2/components/file_server/file_manager.c:303:18:favicon	32	static
+C:/Users/koral/Documents/EspZero-v2/components/file_server/file_manager.c:31:18:error	32	static
+C:/Users/koral/Documents/EspZero-v2/components/file_server/file_manager.c:108:18:fs_error	32	static
+C:/Users/koral/Documents/EspZero-v2/components/file_server/file_manager.c:259:18:delete_handler	752	static
+C:/Users/koral/Documents/EspZero-v2/components/file_server/file_manager.c:243:18:move_handler	1376	static
+C:/Users/koral/Documents/EspZero-v2/components/file_server/file_manager.c:233:18:mkdir_handler	656	static
+C:/Users/koral/Documents/EspZero-v2/components/file_server/file_manager.c:172:18:upload	1152	static
+C:/Users/koral/Documents/EspZero-v2/components/file_server/file_manager.c:116:18:root	32	static
+C:/Users/koral/Documents/EspZero-v2/components/file_server/file_manager.c:123:18:json_string	1488	static
+C:/Users/koral/Documents/EspZero-v2/components/file_server/file_manager.c:136:18:list	1264	static
+C:/Users/koral/Documents/EspZero-v2/components/file_server/file_manager.c:205:18:download	768	static
+C:/Users/koral/Documents/EspZero-v2/components/file_server/file_manager.c:284:18:guarded	32	static
+C:/Users/koral/Documents/EspZero-v2/components/file_server/file_manager.c:309:11:file_manager_register	160	static

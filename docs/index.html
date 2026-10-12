@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="EspZero v2 is a clean ESP-IDF 6 and LVGL 9 firmware foundation for a compact ESP32 touchscreen device." />
+    <title>EspZero v2 · ESP32 touch firmware</title>
+    <style>
+      :root { --ink:#101622; --muted:#596273; --line:#dce1e8; --paper:#f7f7f3; --card:#fff; --accent:#ec5b30; --blue:#1c70a6; }
+      * { box-sizing:border-box; }
+      html { scroll-behavior:smooth; }
+      body { margin:0; color:var(--ink); background:var(--paper); font:16px/1.55 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+      a { color:inherit; }
+      .wrap { width:min(1120px, calc(100% - 40px)); margin:auto; }
+      nav { display:flex; align-items:center; justify-content:space-between; padding:24px 0; border-bottom:1px solid var(--line); }
+      .brand { font-weight:800; letter-spacing:-.04em; text-decoration:none; font-size:1.25rem; }
+      .brand i { color:var(--accent); font-style:normal; }
+      nav ul { display:flex; gap:22px; padding:0; margin:0; list-style:none; }
+      nav a { text-decoration:none; color:var(--muted); font-size:.92rem; }
+      nav a:hover { color:var(--ink); }
+      .hero { min-height:620px; display:grid; grid-template-columns:1.08fr .92fr; gap:72px; align-items:center; padding:72px 0 86px; }
+      .eyebrow { color:var(--blue); font:700 .74rem/1.2 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing:.12em; text-transform:uppercase; }
+      h1 { font-size:clamp(3rem, 7vw, 5.9rem); line-height:.93; letter-spacing:-.075em; margin:18px 0 26px; max-width:720px; }
+      .lead { max-width:560px; color:var(--muted); font-size:1.17rem; }
+      .actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:32px; }
+      .button { display:inline-block; padding:12px 17px; background:var(--ink); border:1px solid var(--ink); color:#fff; text-decoration:none; font-weight:700; border-radius:7px; }
+      .button.ghost { background:transparent; color:var(--ink); }
+      .device { position:relative; aspect-ratio:4/5; max-width:390px; width:100%; justify-self:end; border:13px solid #15191d; border-radius:34px; padding:18px; background:#252c31; box-shadow:18px 20px 0 #d9dfdf; transform:rotate(3deg); }
+      .screen { height:100%; border-radius:14px; padding:21px; overflow:hidden; background:linear-gradient(145deg,#0f6d8a,#1b2d57 56%,#f08a4b); color:#fff; }
+      .screen-top { display:flex; justify-content:space-between; font:700 .7rem ui-monospace, monospace; opacity:.9; }
+      .clock { margin:31px 0 3px; font-size:3.8rem; line-height:1; font-weight:800; letter-spacing:-.08em; }
+      .screen p { margin:0; font-size:.82rem; opacity:.85; }
+      .tiles { display:grid; grid-template-columns:1fr 1fr; gap:9px; margin-top:28px; }
+      .tile { min-height:72px; padding:11px; border:1px solid #ffffff50; border-radius:10px; background:#ffffff20; font-size:.75rem; }
+      .tile strong { display:block; font-size:1.05rem; }
+      section { padding:92px 0; border-top:1px solid var(--line); }
+      h2 { margin:0; font-size:clamp(2rem, 4vw, 3.4rem); letter-spacing:-.06em; line-height:1; }
+      .section-head { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:end; margin-bottom:42px; }
+      .section-head p { color:var(--muted); margin:0; max-width:500px; }
+      .grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+      .card { background:var(--card); border:1px solid var(--line); padding:25px; min-height:210px; border-radius:11px; }
+      .number { color:var(--accent); font:700 .77rem ui-monospace, monospace; }
+      h3 { letter-spacing:-.03em; margin:30px 0 8px; font-size:1.22rem; }
+      .card p { margin:0; color:var(--muted); font-size:.94rem; }
+      .specs { display:grid; grid-template-columns:repeat(2, 1fr); gap:0 42px; background:var(--ink); color:#fff; padding:12px 28px; border-radius:12px; }
+      .spec { display:flex; justify-content:space-between; gap:22px; padding:18px 0; border-bottom:1px solid #ffffff2e; }
+      .spec span { color:#b8c2cd; }
+      .spec strong { text-align:right; font-size:.94rem; }
+      .roadmap { display:grid; grid-template-columns:repeat(3, 1fr); gap:20px; }
+      .phase { border-top:3px solid var(--ink); padding-top:16px; }
+      .phase.done { border-color:var(--accent); }
+      .phase h3 { margin:0 0 8px; }
+      .phase p { margin:0; color:var(--muted); }
+      footer { padding:32px 0 46px; color:var(--muted); font-size:.9rem; display:flex; justify-content:space-between; gap:20px; }
+      @media (max-width:760px) { nav ul { display:none; } .hero,.section-head { grid-template-columns:1fr; gap:34px; } .hero { padding:54px 0 70px; } .device { justify-self:center; max-width:310px; } .grid,.roadmap { grid-template-columns:1fr; } .specs { grid-template-columns:1fr; } footer { display:block; } footer p + p { margin-top:8px; } }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <nav aria-label="Main navigation">
+        <a class="brand" href="#top">esp<i>zero</i> v2</a>
+        <ul><li><a href="#platform">Platform</a></li><li><a href="#hardware">Hardware</a></li><li><a href="#roadmap">Roadmap</a></li></ul>
+      </nav>
+
+      <main id="top">
+        <section class="hero">
+          <div>
+            <p class="eyebrow">ESP-IDF 6 · LVGL 9 · ESP32</p>
+            <h1>A small device with a fresh foundation.</h1>
+            <p class="lead">EspZero v2 is a clean rewrite for a 3.2-inch ESP32 touchscreen: modern display and touch integration, an SD card bus, battery sensing, and room to grow into a capable handheld companion.</p>
+            <div class="actions">
+              <a class="button" href="https://github.com/">View source on GitHub</a>
+              <a class="button ghost" href="#platform">Explore the platform</a>
+            </div>
+          </div>
+          <div class="device" aria-label="Illustration of the EspZero touchscreen interface">
+            <div class="screen"><div class="screen-top"><span>ESPZERO</span><span>4.10V</span></div><div class="clock">10:24</div><p>Ready to explore</p><div class="tiles"><div class="tile"><strong>Music</strong>Bluetooth player</div><div class="tile"><strong>Files</strong>SD browser</div><div class="tile"><strong>Connect</strong>Wi-Fi tools</div><div class="tile"><strong>Update</strong>OTA ready</div></div></div>
+          </div>
+        </section>
+
+        <section id="platform">
+          <div class="section-head"><div><p class="eyebrow">Built for the present</p><h2>Modern firmware, practical hardware.</h2></div><p>The project moves beyond a legacy stack with the official Espressif display and LVGL integration layers. Each building block is intentionally separated so future apps can share dependable device services.</p></div>
+          <div class="grid">
+            <article class="card"><span class="number">01 / DISPLAY</span><h3>LVGL 9 interface</h3><p>A responsive 240 × 320 RGB565 interface driven through <code>esp_lcd</code> and Espressif’s LVGL port.</p></article>
+            <article class="card"><span class="number">02 / INPUT</span><h3>Shared SPI touch</h3><p>The XPT2046 touch controller shares the display bus cleanly, with a dedicated interrupt line for efficient sleep handling.</p></article>
+            <article class="card"><span class="number">03 / SERVICES</span><h3>Ready for real apps</h3><p>SD storage, battery monitoring, OTA partitions, and reusable device components underpin the app layer.</p></article>
+          </div>
+        </section>
+
+        <section id="hardware">
+          <div class="section-head"><div><p class="eyebrow">Target board</p><h2>Designed around a familiar 3.2-inch ESP32 display module.</h2></div><p>The pinout and buses are documented in the project context, including separate SPI channels for the display/touch pair and SD storage.</p></div>
+          <div class="specs">
+            <div class="spec"><span>Controller</span><strong>ESP32-32E</strong></div><div class="spec"><span>Panel</span><strong>ST7789 · 240 × 320</strong></div>
+            <div class="spec"><span>Touch</span><strong>XPT2046 resistive</strong></div><div class="spec"><span>Framework</span><strong>ESP-IDF 6.0.2 · LVGL 9</strong></div>
+            <div class="spec"><span>Storage</span><strong>SPI3 microSD</strong></div><div class="spec"><span>Power sensing</span><strong>ADC battery monitor</strong></div>
+          </div>
+        </section>
+
+        <section id="roadmap">
+          <div class="section-head"><div><p class="eyebrow">Project direction</p><h2>From a working launcher to a versatile device.</h2></div><p>The firmware is organized as selectable apps, allowing each experience to evolve without compromising the shared platform.</p></div>
+          <div class="roadmap">
+            <article class="phase done"><p class="eyebrow">Phase 1 · complete</p><h3>Launcher</h3><p>A minimal test application establishes the display, touch, and runtime foundation.</p></article>
+            <article class="phase"><p class="eyebrow">Next</p><h3>App manager</h3><p>Wi-Fi, HTTP and OTA management alongside an SD card file browser.</p></article>
+            <article class="phase"><p class="eyebrow">In progress</p><h3>Bluetooth music</h3><p>An A2DP source and MP3 player app for audio-focused use.</p></article>
+          </div>
+        </section>
+      </main>
+      <footer><p>EspZero v2 · ESP32 touchscreen firmware</p><p>Built for GitHub Pages.</p></footer>
+    </div>
+  </body>
+</html>

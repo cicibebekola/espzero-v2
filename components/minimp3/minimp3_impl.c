@@ -1,0 +1,3 @@
+#define MINIMP3_IMPLEMENTATION
+#define MINIMP3_ALLOW_MONO_STEREO_TRANSITION
+#include "minimp3.h"

@@ -1,0 +1,6 @@
+"-specs=C:/Users/koral/Documents/EspZero-v2/build_music/bootloader/specs/picolibc.specs"
+-Wno-frame-address
+-mlongcalls
+-fno-builtin-memcpy
+-fno-builtin-memset
+-fno-builtin-bzero
